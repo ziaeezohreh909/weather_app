@@ -1,10 +1,11 @@
 import { CssBaseline } from "@mui/material";
-import SignUp from "../signup/SignUp";
+import { RouterProvider } from "react-router-dom";
+import { router } from "../../router/Router";
 
 export default function HomePage() {
   return (
     <CssBaseline>
-      <SignUp />
+      <RouterProvider router={router}></RouterProvider>
     </CssBaseline>
   );
 }
