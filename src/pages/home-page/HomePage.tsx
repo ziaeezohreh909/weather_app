@@ -1,10 +1,10 @@
 import { CssBaseline } from "@mui/material";
-import Login from "../login/Login";
+import SignUp from "../signup/SignUp";
 
 export default function HomePage() {
   return (
     <CssBaseline>
-      <Login />
+      <SignUp />
     </CssBaseline>
   );
 }
