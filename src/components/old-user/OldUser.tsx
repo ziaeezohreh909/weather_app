@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import signinImage from "../../assets/signin.png";
+import { Link } from "react-router-dom";
 
 export default function OldUser() {
   return (
@@ -25,16 +26,19 @@ export default function OldUser() {
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate ab
           ipsum accusamus ad? Quisquam qui provident repellendus vitae
         </Typography>
-        <Button
-          variant="contained"
-          sx={{
-            border: "1px solid white",
-            borderRadius: "30px",
-            padding: "10px 40px",
-          }}
-        >
-          SIGN IN
-        </Button>
+        <Link to="/">
+          <Button
+            variant="contained"
+            sx={{
+              border: "1px solid white",
+              borderRadius: "30px",
+              padding: "10px 40px",
+            }}
+          >
+            SIGN IN
+          </Button>
+        </Link>
+
         <Box
           component="img"
           src={signinImage}

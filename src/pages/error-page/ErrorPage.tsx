@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { useRouteError } from "react-router-dom";
 import ErrorIcon from "@mui/icons-material/Error";
 
@@ -13,14 +13,20 @@ export default function ErrorPage() {
   return (
     <Box
       id="error-page"
-      className="flex flex-col justify-center items-center align-middle h-screen "
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        margin: 22,
+      }}
     >
       <Typography variant="h1">Oops!</Typography>
-      <Typography variant="body1">
-        Sorry, an unexpected error has occurred.
-      </Typography>
-      <Typography variant="body1">
+      <Typography
+        variant="body1"
+        sx={{ display: "flex", flexDirection: "row", gap: 2 }}
+      >
         <ErrorIcon>{error.statusText || error.message}</ErrorIcon>
+        <Stack>Sorry, an unexpected error has occurred.</Stack>
       </Typography>
     </Box>
   );

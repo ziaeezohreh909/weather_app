@@ -1,7 +1,8 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export type UsersType = {
   id: number;
@@ -13,14 +14,45 @@ export type UsersType = {
 
 export default function FormSignin() {
   const { authorizedUser, setAuthorizedUser } = useAuth();
+  const navigate = useNavigate();
   const [users, setUsers] = useState<UsersType[]>([]);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorValues, setErrorValues] = useState({
-    usernameError: true,
-    passwordError: true,
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
   });
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [errorValues, setErrorValues] = useState({
+    usernameError: false,
+    passwordError: false,
+  });
+
+  const validate = () => {
+    let usernameError = formData.username.trim() === "";
+    let passwordError = formData.password.trim() === "";
+
+    setErrorValues({
+      usernameError,
+      passwordError,
+    });
+
+    return !(usernameError || passwordError);
+  };
+
+  useEffect(() => {
+    if (hasSubmitted) {
+      validate();
+    }
+  }, [formData]);
+
+  const handelChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const getUsers = async () => {
     try {
@@ -36,29 +68,29 @@ export default function FormSignin() {
   ) => {
     e.preventDefault();
     setHasSubmitted(true);
-    if (!errorValues.usernameError && !errorValues.passwordError) {
+    if (validate()) {
       getUsers().then((res) => {
         if (res) {
           setUsers(res);
         }
         if (res.length > 0) {
-          console.log(users);
           const usernameIsInDataBase = res.findIndex(
-            (user: UsersType) => user.username === username
+            (user: UsersType) =>
+              user.username === formData.username &&
+              user.password === formData.password
           );
           if (usernameIsInDataBase !== -1) {
             console.log(
               res[usernameIsInDataBase].password,
               typeof res[usernameIsInDataBase].password
             );
-            console.log(password);
             console.log(res[usernameIsInDataBase].password);
-            if (res[usernameIsInDataBase].password === password) {
+            if (res[usernameIsInDataBase].password === formData.password) {
               setAuthorizedUser(res[usernameIsInDataBase]);
-              console.log("hello zohi");
+              navigate("home");
             }
           } else {
-            alert("there isn't this username,Please sign up");
+            alert("there is a bad thing");
           }
         }
       });
@@ -85,15 +117,8 @@ export default function FormSignin() {
             id="username"
             placeholder="Username"
             name="username"
-            value={username}
-            onChange={(e) => {
-              if (e.target.value === "") {
-                setErrorValues({ ...errorValues, usernameError: true });
-              } else {
-                setErrorValues({ ...errorValues, usernameError: false });
-              }
-              setUsername(e.target.value);
-            }}
+            value={formData.username}
+            onChange={handelChange}
           />
           {hasSubmitted && errorValues.usernameError ? (
             <Box>
@@ -116,15 +141,8 @@ export default function FormSignin() {
             type="password"
             placeholder="Password"
             id="password"
-            value={password}
-            onChange={(e) => {
-              if (e.target.value === "") {
-                setErrorValues({ ...errorValues, passwordError: true });
-              } else {
-                setErrorValues({ ...errorValues, passwordError: false });
-              }
-              setPassword(e.target.value);
-            }}
+            value={formData.password}
+            onChange={handelChange}
           />
           {hasSubmitted && errorValues.passwordError ? (
             <Box>
@@ -140,7 +158,7 @@ export default function FormSignin() {
             </Box>
           ) : null}
           <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-            SIGN IN
+            Login
           </Button>
         </Box>
       </Box>
