@@ -4,34 +4,25 @@
       "id": "1234",
       "username": "Zohreh",
       "email": "ziaeezohreh@gmail.com",
-      "password": "1Q23",
-      "islogin": false
+      "password": "1Q23"
     },
     {
       "id": "1235",
       "username": "Maohammad",
       "email": "Mohammad@gmail.com",
-      "password": "1234",
-      "islogin": false
+      "password": "1234"
     },
     {
-      "id": "1237",
-      "username": "Zahra",
-      "email": "zahra@gmail.com",
-      "password": "3456",
-      "islogin": false
-    },
-    {
-      "id": "9249",
-      "username": "Zohi",
+      "id": "3436",
+      "username": "Zohreh",
       "email": "ziaeezohreh909@gmail.com",
-      "password": "987"
+      "password": "1234"
     },
     {
-      "id": "70b5",
-      "username": "Bita",
-      "email": "Bita@gmail.com",
-      "password": "123456"
+      "id": "f047",
+      "username": "mami",
+      "email": "en.masoomi@gmail.com",
+      "password": "9876"
     }
   ]
 }

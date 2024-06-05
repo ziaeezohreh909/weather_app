@@ -9,13 +9,15 @@ export default function SignUp() {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-around",
         padding: 2,
         gap: 3,
       }}
     >
       <FormSignUp />
-      <OldUser />
+      <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+        <OldUser />
+      </Box>
     </Box>
   );
 }

@@ -3,13 +3,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GoogleIcon from "@mui/icons-material/Google";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export type UsersType = {
   id: number;
   username: string;
   email: string;
   password: string;
-  islogin: boolean;
 };
 
 export default function FormSignin() {
@@ -157,9 +160,31 @@ export default function FormSignin() {
               </b>
             </Box>
           ) : null}
-          <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-            Login
-          </Button>
+
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              mt: 2,
+            }}
+          >
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ borderRadius: "30px", padding: "10px 40px" }}
+            >
+              Login
+            </Button>
+          </Box>
+        </Box>
+        <Typography variant="h6" sx={{ m: 2 }}>
+          Or Sign up with social platform
+        </Typography>
+        <Box sx={{display:"flex", gap:3}}>
+          <FacebookIcon></FacebookIcon>
+          <TwitterIcon></TwitterIcon>
+          <GoogleIcon></GoogleIcon>
+          <LinkedInIcon></LinkedInIcon>
         </Box>
       </Box>
     </Container>

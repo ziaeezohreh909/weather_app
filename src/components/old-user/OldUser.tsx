@@ -30,7 +30,7 @@ export default function OldUser() {
           <Button
             variant="contained"
             sx={{
-              border: "1px solid white",
+              // border: "1px solid white",
               borderRadius: "30px",
               padding: "10px 40px",
             }}
@@ -42,7 +42,7 @@ export default function OldUser() {
         <Box
           component="img"
           src={signinImage}
-          sx={{ width: "200px", height: "auto", marginRight: 3 }}
+          sx={{ width: "400px", height: "200px", marginRight: 3 }}
         />
       </Box>
     </Box>

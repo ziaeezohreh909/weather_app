@@ -1,5 +1,9 @@
 import { Box } from "@mui/material";
-
+import WeatherApp from "../../components/template/WeatherApp";
 export default function Home() {
-  return <Box>welcome to home Zohreh</Box>;
+  return (
+    <Box>
+      <WeatherApp />
+    </Box>
+  );
 }

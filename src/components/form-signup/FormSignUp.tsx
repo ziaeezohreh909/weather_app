@@ -1,5 +1,9 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GoogleIcon from "@mui/icons-material/Google";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 export default function FormSignUp() {
   const [formData, setFormData] = useState({
@@ -82,7 +86,7 @@ export default function FormSignUp() {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h6">
+          <Typography component="h1" variant="h4" sx={{ fontWeight: "bold" }}>
             Sign up
           </Typography>
           <Box
@@ -161,22 +165,49 @@ export default function FormSignUp() {
                 </b>
               </Box>
             ) : null}
-            <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
-              SIGN UP
-            </Button>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: 2,
+              }}
+            >
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ borderRadius: "30px", padding: "10px 40px" }}
+              >
+                SIGN UP
+              </Button>
+            </Box>
           </Box>
           {showButtonSuccess ? (
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                mt: 3,
+              }}
+            >
               <Button
                 type="submit"
                 variant="contained"
                 color="success"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ borderRadius: "30px", padding: "10px 40px" }}
               >
-                Sign Up Successful
+                Sign Up Successfull
               </Button>
             </Box>
           ) : null}
+          <Typography variant="h6" sx={{ m: 2 }}>
+            Or Sign up with social platform
+          </Typography>
+          <Box sx={{ display: "flex", gap: 3 }}>
+            <FacebookIcon></FacebookIcon>
+            <TwitterIcon></TwitterIcon>
+            <GoogleIcon></GoogleIcon>
+            <LinkedInIcon></LinkedInIcon>
+          </Box>
         </Box>
       </Container>
     </Box>
