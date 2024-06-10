@@ -10,7 +10,7 @@ export default function Card({
   return (
     <Box
       width="300px"
-      height="200px"
+      height="250px"
       sx={{
         backgroundColor: "#00b0ff",
         borderRadius: "10px",

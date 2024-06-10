@@ -90,7 +90,7 @@ export default function FormSignin() {
             console.log(res[usernameIsInDataBase].password);
             if (res[usernameIsInDataBase].password === formData.password) {
               setAuthorizedUser(res[usernameIsInDataBase]);
-              navigate("home");
+              navigate("/home");
             }
           } else {
             alert("there is a bad thing");
@@ -103,7 +103,6 @@ export default function FormSignin() {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -180,7 +179,7 @@ export default function FormSignin() {
         <Typography variant="h6" sx={{ m: 2 }}>
           Or Sign up with social platform
         </Typography>
-        <Box sx={{display:"flex", gap:3}}>
+        <Box sx={{ display: "flex", gap: 3 }}>
           <FacebookIcon></FacebookIcon>
           <TwitterIcon></TwitterIcon>
           <GoogleIcon></GoogleIcon>
